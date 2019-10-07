@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import validators, ValidationError
 
 
-# 自定义校验
+# 自定义的校验
 def keywords_valid(form, field):
     """
         :param form: 表单
@@ -16,6 +16,7 @@ def keywords_valid(form, field):
         raise ValidationError("不可以使用敏感词命名")
 
 
+# 设置任务校验
 class TaskForm(FlaskForm):
     # 任务名称
     name = wtforms.StringField(
@@ -29,7 +30,7 @@ class TaskForm(FlaskForm):
             validators.DataRequired("姓名不能为空"),
             # Length：长度检验 需要两个参数max和min
             validators.Length(max=8, min=4),
-            # 不需要传参
+            # 添加自定义校验 不需要传参
             keywords_valid
         }
     )

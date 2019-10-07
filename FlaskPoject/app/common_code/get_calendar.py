@@ -68,6 +68,7 @@ class Calendar():
             print()
 
 
+# 验证
 if __name__ == '__main__':
     calendar = Calendar(2018, 6)
     print(calendar.return_calendar())

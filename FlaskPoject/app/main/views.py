@@ -14,6 +14,7 @@ from .forms import TaskForm
 # from main import csrf
 
 from settings import STATICFILES_DIR
+# 调用日历
 from ..common_code.get_calendar import Calendar
 from ..common_code.get_page import Paginator
 
@@ -131,6 +132,10 @@ def index():
 @main.route("/user_info/")
 @login_valid
 def user_info():
+    """
+    完善日历和课程表的功能
+    """
+    # 实例化课程表对象
     calendar = Calendar()
     # 返回结果才是一个列表嵌套列表的日历
     result = calendar.return_calendar()
