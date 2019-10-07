@@ -12,7 +12,6 @@ from app import api
 from app.models import *
 from .forms import TaskForm
 # from main import csrf
-
 from settings import STATICFILES_DIR
 # 调用日历
 from ..common_code.get_calendar import Calendar
@@ -233,6 +232,10 @@ def picture():
 
 @api.resource("/Api/leave/")
 class LeaveApi(Resource):
+    """
+    restful 接口的开发
+    """
+
     # 定义返回的格式
     def __init__(self):
         super(LeaveApi, self).__init__()
@@ -277,7 +280,12 @@ class LeaveApi(Resource):
     #             self.result["data"] = result_data
     #
     #     return self.result
-    def get_data(self, afl):  # 获取数据
+
+    def get_data(self, afl):
+        """
+        获取数据
+        :param afl: 传入假条的对象
+        """
         result_data = {
             "person_id": afl.person_id,
             "person_name": afl.person_name,
@@ -287,10 +295,13 @@ class LeaveApi(Resource):
             "leave_start_time": afl.leave_start_time,
             "leave_end_time": afl.leave_end_time
         }
+
         return result_data
 
-    # get优化
     def get(self):
+        """
+        优化后的get接口
+        """
         data = request.args
         id = data.get("id")
         if id:
@@ -308,8 +319,12 @@ class LeaveApi(Resource):
         self.result["method"] = "GET"
         return self.result
 
-    def post(self):  # 用来保存数据
+    def post(self):
+        """
+        post接口，用来保存数据
+        """
         data = request.form
+        # 实例化假条对象
         afl = ApplicationForLeave()
         afl.person_id = data.get("person_id")
         afl.person_name = data.get("person_name")
@@ -319,6 +334,7 @@ class LeaveApi(Resource):
         afl.leave_start_time = data.get("leave_start_time")
         afl.leave_end_time = data.get("leave_end_time")
         afl.leave_status = "0"
+        # 保存数据
         afl.save()
         self.result["data"] = self.get_data(afl)
         self.result["method"] = "POST"
@@ -347,6 +363,9 @@ class LeaveApi(Resource):
     #     return self.result
 
     def put(self):  # 方法2
+        """
+        优化后的put接口
+        """
         data = request.form
         id = data.get("id")
         afl = ApplicationForLeave.query.get(int(id))
@@ -366,6 +385,9 @@ class LeaveApi(Resource):
         return self.result
 
     def delete(self):
+        """
+        delete接口
+        """
         data = request.form
         id = data.get("id")
         afl = ApplicationForLeave.query.get(int(id))
