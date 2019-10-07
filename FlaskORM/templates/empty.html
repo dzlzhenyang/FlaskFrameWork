@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+{% block lable %}
+    ajax
+{% endblock %}
+{% block content %}
+{% endblock %}
+
+{% block script %}
+    <script>
+        $.ajax({
+            url: "/Api/leave/",
+            type: "get",
+            data: "",
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        })
+    </script>
+{% endblock %}
