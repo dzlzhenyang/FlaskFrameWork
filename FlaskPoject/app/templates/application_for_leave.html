@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}请假条{% endblock %}
+
+{% block lable %}假条申请{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}">
+        <table class="table table-bordered">
+            <tr>
+                <th colspan="4" style="text-align: center"><h3>请假条</h3></th>
+            </tr>
+            <tr>
+                <th>请假人姓名</th>
+                <td><input type="text" class="form-control form-control-user" id="person_name" name="person_name"></td>
+                <th>请假类型</th>
+                <td>
+                    <select name="leave_type" id="leave_type" class="form-control form-control-user">
+                        <option>事假</option>
+                        <option selected="selected">病假</option>
+                        <option>婚假</option>
+                        <option>产假</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>请假开始时间</th>
+                <td><input class="form-control form-control-user" type="date" id="leave_start_time"
+                           name="leave_start_time"></td>
+                <th>请假结束时间</th>
+                <td><input class="form-control form-control-user" type="date" id="leave_end_time"
+                           name="leave_end_time"></td>
+            </tr>
+            <tr>
+                <th>请假事由</th>
+                <td><textarea class="form-control form-control-user" name="leave_description"></textarea></td>
+                <th>请假人联系方式</th>
+                <td><input type="text" class="form-control form-control-user" id="person_phone" name="person_phone">
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input type="submit" class="btn btn-user btn-primary btn-block" value="提交">
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}
