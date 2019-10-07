@@ -9,6 +9,7 @@
    """
 
 
+# 对请假条进行分页
 class Paginator():
     def __init__(self, data, page_size):
         """
@@ -55,6 +56,7 @@ class Paginator():
 
 from app.models import *
 
+# 验证
 if __name__ == '__main__':
     data = ApplicationForLeave.query.all()
     page_size = 3

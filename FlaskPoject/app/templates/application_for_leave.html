@@ -5,7 +5,9 @@
 {% block lable %}假条申请{% endblock %}
 
 {% block content %}
+
     <form method="post">
+<!--        csrf为隐藏类型-->
         <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}">
         <table class="table table-bordered">
             <tr>
@@ -47,4 +49,5 @@
             </tr>
         </table>
     </form>
+
 {% endblock %}

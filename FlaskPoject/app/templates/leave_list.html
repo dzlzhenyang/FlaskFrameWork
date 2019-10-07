@@ -19,6 +19,7 @@
             <th>请假人联系方式</th>
             <th>状态</th>
         </tr>
+        {#        循环后端传来的数据#}
         {% for a in page_data %}
             <tr>
                 <td>{{ a.person_name }}</td>
@@ -41,6 +42,7 @@
             </tr>
         {% endfor %}
     </table>
+    {#    页码设置#}
     <ul class="pagination" style="float: right">
         {% if not paginator.is_start %}
             <li class="paginate_button page-item ">

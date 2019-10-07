@@ -140,6 +140,9 @@ def user_info():
 @main.route("/application_for_leave/", methods=["get", "post"])
 @login_valid
 def application_for_leave():
+    """
+    请假条申请
+    """
     if request.method == "POST":
         # 获取前端传来的数据
         person_name = request.form.get("person_name")
@@ -167,6 +170,10 @@ def application_for_leave():
 @main.route("/leave_list/<int:page>/")
 @login_valid
 def leave_list(page):
+    """
+    请假条列表
+    :param page: 页码
+    """
     afl = ApplicationForLeave.query.all()
     # 传入数据  每页数据为3条
     paginator = Paginator(afl, 4)
